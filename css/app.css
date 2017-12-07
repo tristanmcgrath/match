@@ -59,4 +59,17 @@ html {
 	border-radius: 10px;
 	box-shadow: 12px 15px 20px 0 rgba(46,61,73, 0.5);
 	margin: 3em auto 3em;
+	display: flex;
+	flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.deck .card {
+	height: 125px;
+	width: 125px;
+	background: #2e3d49;
+	border-radius: 8px;
+	cursor: pointer;
+	box-shadow: 5px 2px 20px 0 rgba(46,61,73, 0.5);
 }
