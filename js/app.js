@@ -1,4 +1,4 @@
-var matchArray = [];
+var tryCount = 0;
 
 $(document).ready(function() {
     var randomArray = shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]);
@@ -45,6 +45,8 @@ function shuffle(array) {
 function matchTest(){
     var first = $('.selected').find('i').eq(0).attr("class");
     var second = $('.selected').find('i').eq(1).attr("class");
+    tryCount += 1;
+    $('#guess-counter').html(`Guess Count: ${tryCount}`);
 
     if ( first === second ) {
         $('.selected').toggleClass("match", true);
@@ -57,11 +59,13 @@ function matchTest(){
 
     if ( $('.match').length === 16 ) {
         setTimeout(function() {
-            alert ('Victory!');
+            $('.winner-overlay').css({"display": "inline-block", "position": "absolute", "z-index": "1", "top": "0", "left": "0"});
+            var confettiSettings = { target: 'my-canvas' };
+            var confetti = new ConfettiGenerator(confettiSettings);
+            confetti.render();
+            $('canvas').css({"width": "100%", "height": "900px"})
         }, 500);
     }
-
-
 }
 
 

@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/index.min.js"></script>
   <script src="https://use.fontawesome.com/73b66035f0.js"></script>
   <meta charset="UTF-8">
   <title>Matching Game</title>
@@ -11,6 +13,9 @@
   <link rel="stylesheet" type="text/css" href="css/app.css">
 </head>
 <body>
+  <div class="banner">
+    <p id="guess-counter">Guess Count: 0</p>
+  </div>
   <ul class="deck">
     <li class="card"></li>
     <li class="card"></li>
@@ -29,7 +34,14 @@
     <li class="card"></li>
     <li class="card"></li>
   </ul>
+  <div class="winner-overlay"></div>
+  <canvas id="my-canvas"></canvas>
 
   <script src="js/app.js"></script>
+  <!-- <script>
+    var confettiSettings = { target: 'my-canvas' };
+      var confetti = new ConfettiGenerator(confettiSettings);
+      confetti.render();
+  </script> -->
 </body>
 </html>
