@@ -75,9 +75,15 @@ table {
 	border-radius: 8px;
 	cursor: pointer;
 	box-shadow: 5px 2px 20px 0 rgba(46,61,73, 0.5);
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0;
 }
 
 .deck .card.selected {
 	background: #02b3e4;
 	cursor: default;
+	font-size: 33px;
 }
