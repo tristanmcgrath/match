@@ -87,3 +87,8 @@ table {
 	cursor: default;
 	font-size: 60px;
 }
+
+.deck .card.match {
+	background: green;
+	font-size: 60px;
+}
