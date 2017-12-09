@@ -1,4 +1,4 @@
-/***Begin UA Style Reset Styling***/
+/***Begin UA Style Reset***/
 /*****************************************/
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
@@ -22,7 +22,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	display: inline-block;
-	background: #ffe7ba;
+	background: #ffe7ba;  /*Okay, mostly reset styles...*/
 }
 
 html, body {
@@ -30,13 +30,6 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-
-canvas {
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 2;
 }
 
 ol, ul {
@@ -60,7 +53,14 @@ table {
 /*****************************************************/
 /*****End UA Style Reset Styling****/
 
-#game-title {
+
+
+
+/******************************************************/
+/*****Begin Game Styling****/
+/*****Begin styling of page contents above and below game board******/
+
+#game-title {							/*Styling for the game header 'Match'*/
 	text-align: center;
   text-transform: uppercase;
   font-family: 'Baloo', cursive;
@@ -69,13 +69,13 @@ table {
   margin-top: 30px;
 }
 
-.banner {
+.banner {								/*Styling for the .banner div which contains live guess count and star count*/
 	height: 30px;
 	width: 660px;
 	margin: 10px auto 0;
 }
 
-#guess-counter, #star-count {
+#guess-counter, #star-count {      /*Styling for guess count and star count p tags*/
 	box-sizing: border-box;
 	padding: 0 15px;
 	line-height: 30px;
@@ -89,8 +89,25 @@ table {
 	float: right;
 }
 
-/****Begin Game Board Stylings***/
-.deck {
+.taunt {						/*Styling for taunt message p tag at bottom of screen*/
+	color: #b1abab;
+	text-align: center;
+	font-family: 'Shadows Into Light', cursive;
+	font-size: 70px;
+	padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 60px;
+}
+/*****End Styling of page contents above and below game board****/
+/******************************************************/
+
+
+
+
+/******************************************************/
+/*****Begin styling of game board and cards****/
+
+.deck {												/*Styling for the game board <ul> container*/
 	box-sizing: border-box;
 	width: 660px;
   min-height: 680px;
@@ -105,10 +122,10 @@ table {
   align-items: center;
 }
 
-.deck .card {
+.deck .card {           /*Default styling for the individual cards on game board*/
 	height: 125px;
 	width: 125px;
-	transition: background 1s ease;
+	transition: background 1s ease;   /*Transition added for card flips*/
 	background: #2e3d49;
 	border-radius: 8px;
 	cursor: pointer;
@@ -117,31 +134,47 @@ table {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 0;
+	font-size: 0;      /*Font size 0 hides card icon by default*/
 }
 
-.deck .card.selected {
-	transition: background 0.5s ease;
+.deck .card.selected {                /*Styling for cards that are flipped and currently being guessed*/
+	transition: background 0.5s ease;   /*Transition added for when card is flipped*/
 	background: #02b3e4;
 	cursor: default;
-	font-size: 60px;
+	font-size: 60px;                   /*Font size increased from 0 causes icon to appear when card is flipped*/
 }
 
-.deck .card.match {
-	transition: background 1s ease;
+.deck .card.match {									 /*Styling for cards that have been matched*/
+	transition: background 1s ease;    /*Transition added for when a match is found*/
 	background: #97f7d8;
 	font-size: 60px;
+	cursor: default;
 	color: #80a7ec;
 }
+/*****End Styling of game board and cards****/
+/******************************************************/
 
-.winner-overlay {
-	height: 1100px;
+
+
+
+/******************************************************/
+/*****Begin styling of elements which appear when game finishes******/
+
+.winner-overlay {      /*Creates a transparent overlay*/
+	height: 1100px;			 /*I wasn't sure how to do a 100% height the way you can with width, any suggestions?*/
 	width: 100%;
 	background: rgba(46,61,73, 0.5);
-	display: none;
+	display: none;       /*Display none hides element by default*/
 }
 
-.winner-pop-up {
+canvas {								/*This is the canvas used to create the confetti shower*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;						/*With no default height or width element does not appear by default*/
+}
+
+.winner-pop-up {				 /*Styling for victory pop-up box*/
 	box-sizing: border-box;
 	border-radius: 40px;
   width: 70%;
@@ -152,39 +185,37 @@ table {
   left: 50%;
   transform: translate(-50%,-50%);
   background: rgba(46,61,73, 0.8);
-  z-index: -1;
-	display: none;
+  z-index: -1;            /*negative z index hides element behind game board so that it doesn't interfere*/
+	display: none;          /*winner pop up will not display by default*/
 	text-align: center;
 	color: white;
 	padding: 60px;
 }
 
-.taunt {
-	color: #b1abab;
-	text-align: center;
-	font-family: 'Shadows Into Light', cursive;
-	font-size: 70px;
-	padding-left: 10px;
-  padding-right: 10px;
-  margin-bottom: 60px;
-}
-
-.winner-pop-up h2 {
+.winner-pop-up h2 {            /*Styling for winner pop-up box header*/
 	font-family: 'Pacifico', cursive;
 	font-size: 70px;
 }
 
-.winner-pop-up .stars {
+.winner-pop-up .stars {					/*Styling for winner pop-up box stars achieved*/
 	padding: 60px 0;
   font-size: 100px;
   font-weight: bold;
   color: #ffdf30;
 }
 
-.winner-pop-up .winner-text {
+.winner-pop-up .winner-text {     /*Styling for winner pop-up game summary text*/
 	font-size: 30px;
   font-family: 'Nunito', sans-serif;
 }
+/*****End styling of elements which appear when game finishes****/
+/******************************************************/
+
+
+
+/******************************************************/
+/*********Begin Break Point Styling***********/
+/*Break Point 1: Decreases the size of several containers and text elements from default*/
 
 @media screen and (max-width: 876px) {
 
@@ -209,9 +240,12 @@ table {
 		font-size: 48px;
 		margin-bottom: 40px;
 	}
-
 }
 
+
+
+/*Break Point 2: Further decreases the size of several containers and text elements,
+								 first decrease of the game board and card sizes from default*/
 @media screen and (max-width: 680px) {
 
 	.banner {
@@ -257,9 +291,12 @@ table {
 	.winner-pop-up .winner-text {
 		font-size: 18px;
 	}
-
 }
 
+
+
+/*Break Point 3: Final size decrease of several containers text elements from default,
+								 second and final decrease of game board and card sizes*/
 @media screen and (max-width: 520px) {
 
 	#game-title {
@@ -315,3 +352,5 @@ table {
 		font-size: 16px;
 	}
 }
+/*********End Break Point Styling***********/
+/******************************************************/

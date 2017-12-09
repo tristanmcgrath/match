@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="js/index.min.js"></script>
-  <script src="https://use.fontawesome.com/73b66035f0.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>       <!--jQuery-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>  <!--js for jQuery UI-->
+  <script src="js/index.min.js"></script>                                                        <!--js for confetti-->
+  <script src="https://use.fontawesome.com/73b66035f0.js"></script>                              <!--js for fontawesome fonts-->
   <meta charset="UTF-8">
   <title>Matching Game</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="">
   <link rel="stylesheet" type="text/css" href="css/app.css">
-  <link href="https://fonts.googleapis.com/css?family=Baloo|Nunito|Pacifico|Shadows+Into+Light" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Baloo|Nunito|Pacifico|Shadows+Into+Light" rel="stylesheet"> <!--imported fonts-->
 </head>
 <body>
-  <h1 id="game-title">Match</h1>
-  <div class="banner">
-    <p id="guess-counter">Guess Count: 0</p>
-    <p id="star-count">☆☆☆☆☆</p>
+  <h1 id="game-title">Match</h1>    <!--Game Title-->
+
+  <div class="banner">                            <!--.banner div contains the guess counter and stars counter-->
+    <p id="guess-counter">Guess Count: 0</p>      <!--Displays the current number of guesses used so far-->
+    <p id="star-count">☆☆☆☆☆</p>                  <!--Displays the number of stars remaining (player begins with 5 and progressively loses them)-->
   </div>
-  <ul class="deck">
-    <li class="card"></li>
+
+  <ul class="deck">              <!--Deck of cards is a <ul> and each card is an <li> element-->
+    <li class="card"></li>       <!--<i> tags will be appended within each <li> element based on card shuffle at page load (see app.js)-->
     <li class="card"></li>
     <li class="card"></li>
     <li class="card"></li>
@@ -37,15 +39,19 @@
     <li class="card"></li>
     <li class="card"></li>
   </ul>
-  <p class="taunt">How many guesses will it take you?</p>
-  <div class="winner-pop-up">
-    <h2>Congratulations!!!</h2>
-    <p class="stars">☆☆☆☆☆</p>
-    <p class="winner-text"></p>
-  </div>
-  <div class="winner-overlay"></div>
-  <canvas id="my-canvas"></canvas>
 
-  <script src="js/app.js"></script>
+  <p class="taunt">How many guesses will it take you?</p>       <!--Houses a taunt message that displays at the bottom of the page-->
+
+  <div class="winner-pop-up">     <!--pop-up congratulations message appears on game over (hidden by default)-->
+    <h2>Congratulations!!!</h2>
+    <p class="stars"></p>         <!--Paragraph contents filled when game ends with remaining star count (see app.js)-->
+    <p class="winner-text"></p>   <!--Paragraph contents filled when game ends with custom text (see app.js)-->
+  </div>
+
+  <div class="winner-overlay"></div>   <!--Creates a grey overlay over the page once the game is over (hidden by default)-->
+
+  <canvas id="my-canvas"></canvas>     <!--This is the canvas element which will be used to create the confetti (hidden by default)-->
+
+  <script src="js/app.js"></script>    <!--Contains event listener click function and game logic-->
 </body>
 </html>
