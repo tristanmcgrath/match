@@ -43,34 +43,52 @@ function shuffle(array) {
 
 
 function matchTest(){
-    var first = $('.selected').find('i').eq(0).attr("class");
-    var second = $('.selected').find('i').eq(1).attr("class");
-    tryCount += 1;
-    $('#guess-counter').html(`Guess Count: ${tryCount}`);
+    var first = $('.selected').find('i').eq(0).attr("class");  //Class names for the fa icons are what is used
+    var second = $('.selected').find('i').eq(1).attr("class"); //to test for matches.
+    tryCount += 1;                                             //Every two card flips will tricker an increment of guess count
+    $('#guess-counter').html(`Guess Count: ${tryCount}`);      //Visually updates the guess count for the player
 
-    if ( first === second ) {
-        $('.selected').toggleClass("match", true);
-        $('.selected').toggleClass("selected", false);
+    if (tryCount > 12 && tryCount < 16) {          //This block of code progressively decreases the number
+      $('#star-count').html(`☆☆☆☆`);               //of stars with the more guesses it takes to solve
+    } else if (tryCount >= 16 && tryCount < 20) {
+      $('#star-count').html(`☆☆☆`);
+    } else if (tryCount >= 20 && tryCount < 23) {
+      $('#star-count').html(`☆☆`);
+    } else if (tryCount >= 23) {
+      $('#star-count').html(`☆`);
+    }
+
+    if ( first === second ) {                           //If cards match...
+        $('.selected').toggleClass("match", true);      //apply the .match class which changes the background color.
+        $('.selected').toggleClass("selected", false);  //remove the .selected class which is for cards currently being guessed.
     } else {
         setTimeout(function() {
-            $('.selected').toggleClass("selected", false);
+            $('.selected').toggleClass("selected", false); //If the cards do not match, flip them back over after half a second
         }, 500);
     }
 
-    if ( $('.match').length === 16 ) {
+    if ( $('.match').length === 16 ) {                      //This code checks to see if the player has won the game. If so...
         setTimeout(function() {
-            $('.winner-overlay').css({"display": "inline-block", "position": "absolute", "z-index": "1", "top": "0", "left": "0"});
-            var confettiSettings = { target: 'my-canvas' };
-            var confetti = new ConfettiGenerator(confettiSettings);
-            confetti.render();
-            $('canvas').css({"width": "100%", "height": "900px"})
-        }, 500);
+            var starCount = $('#star-count').html();        //stores the star counts html in a variable for victory pop-up message
+
+            $('.winner-overlay').css({"display": "inline-block", "position": "absolute", "z-index": "1", "top": "0", "left": "0"}); //creates grey overlay
+
+            var confettiSettings = { target: 'my-canvas', height: 1100 };  //this code makes use of the confetti code stored in js/index.min.js
+            var confetti = new ConfettiGenerator(confettiSettings);   //confetti will display on player victory
+            confetti.render();                                        //confetti complements of npmjs https://www.npmjs.com/package/confetti-js
+
+            $('.winner-pop-up').css({"z-index": "3", "display": "block"});               //causes the hidden winner pop-up screen to appear
+            $('.winner-text').html(`You completed the puzzle in ${tryCount} guesses!`); //uses tryCount to tell the player how many guesses it took them
+            $('.stars').html(starCount);                                             //displays the appropriate number of stars on pop-up victory screen
+
+        }, 500); //half second delay
     }
 }
 
 
 $('.card').click(function(evt){
-    if ($('.selected').length < 2 && $(evt.target).hasClass("selected") === false) {
+    var currentCardClass = $(evt.target).attr("class");
+    if ($('.selected').length < 2 && (currentCardClass !== "card selected" && currentCardClass[0] !== "f")) {
         $(evt.target).toggleClass("selected");
         if ($('.selected').length === 2) {
             matchTest();

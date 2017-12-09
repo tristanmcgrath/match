@@ -22,6 +22,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 	display: inline-block;
+	background: #ffe7ba;
 }
 
 html, body {
@@ -59,7 +60,14 @@ table {
 /*****************************************************/
 /*****End UA Style Reset Styling****/
 
-
+#game-title {
+	text-align: center;
+  text-transform: uppercase;
+  font-family: 'Baloo', cursive;
+  font-size: 120px;
+  color: #80a7ec;
+  margin-top: 30px;
+}
 
 .banner {
 	height: 30px;
@@ -67,12 +75,18 @@ table {
 	margin: 10px auto 0;
 }
 
-.banner p {
+#guess-counter, #star-count {
 	box-sizing: border-box;
 	padding: 0 15px;
 	line-height: 30px;
 	font-size: 20px;
 	display: inline-block;
+	font-family: 'Nunito', sans-serif;
+	color: #b1abab;
+}
+
+#star-count {
+	float: right;
 }
 
 /****Begin Game Board Stylings***/
@@ -94,7 +108,7 @@ table {
 .deck .card {
 	height: 125px;
 	width: 125px;
-	transition: background 0.8s ease;
+	transition: background 1s ease;
 	background: #2e3d49;
 	border-radius: 8px;
 	cursor: pointer;
@@ -121,8 +135,183 @@ table {
 }
 
 .winner-overlay {
-	height: 900px;
+	height: 1100px;
 	width: 100%;
 	background: rgba(46,61,73, 0.5);
 	display: none;
+}
+
+.winner-pop-up {
+	box-sizing: border-box;
+	border-radius: 40px;
+  width: 70%;
+  height: 500px;
+  border: 5px solid #00c4ff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: rgba(46,61,73, 0.8);
+  z-index: -1;
+	display: none;
+	text-align: center;
+	color: white;
+	padding: 60px;
+}
+
+.taunt {
+	color: #b1abab;
+	text-align: center;
+	font-family: 'Shadows Into Light', cursive;
+	font-size: 70px;
+	padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 60px;
+}
+
+.winner-pop-up h2 {
+	font-family: 'Pacifico', cursive;
+	font-size: 70px;
+}
+
+.winner-pop-up .stars {
+	padding: 60px 0;
+  font-size: 100px;
+  font-weight: bold;
+  color: #ffdf30;
+}
+
+.winner-pop-up .winner-text {
+	font-size: 30px;
+  font-family: 'Nunito', sans-serif;
+}
+
+@media screen and (max-width: 876px) {
+
+	.winner-pop-up {
+	  height: 360px;
+	}
+
+	.winner-pop-up h2 {
+		font-size: 46px;
+	}
+
+	.winner-pop-up .stars {
+	  font-size: 70px;
+		padding: 30px 0;
+	}
+
+	.winner-pop-up .winner-text {
+		font-size: 26px;
+	}
+
+	.taunt {
+		font-size: 48px;
+		margin-bottom: 40px;
+	}
+
+}
+
+@media screen and (max-width: 680px) {
+
+	.banner {
+		width: 480px;
+	}
+
+	.deck {
+		width: 480px;
+		min-height: 500px;
+		padding: 16px;
+		margin: 0 auto 25px;
+	}
+
+	.deck .card {
+		height: 100px;
+		width: 100px;
+	}
+
+	.deck .card.match,
+	.deck .card.selected {
+		font-size: 50px;
+	}
+
+	.taunt {
+		margin-bottom: 30px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.winner-pop-up {
+	  height: 260px;
+		padding: 30px;
+	}
+
+	.winner-pop-up h2 {
+		font-size: 38px;
+	}
+
+	.winner-pop-up .stars {
+	  font-size: 50px;
+	}
+
+	.winner-pop-up .winner-text {
+		font-size: 18px;
+	}
+
+}
+
+@media screen and (max-width: 520px) {
+
+	#game-title {
+		font-size: 90px;
+	}
+
+	#guess-counter, #star-count {
+		padding: 0 10px;
+		font-size: 16px;
+	}
+
+	.banner {
+		width: 300px;
+	}
+
+	.deck {
+		width: 300px;
+		min-height: 300px;
+		padding: 8px;
+		margin: 0 auto 20px;
+	}
+
+	.deck .card {
+		height: 66px;
+		width: 66px;
+	}
+
+	.deck .card.match,
+	.deck .card.selected {
+		font-size: 36px;
+	}
+
+	.taunt {
+		font-size: 28px;
+	}
+
+	.winner-pop-up {
+		width: 85%;
+	  height: 185px;
+		padding: 15px;
+	}
+
+	.winner-pop-up h2 {
+		font-size: 26px;
+	}
+
+	.winner-pop-up .stars {
+	  font-size: 40px;
+		padding: 20px 0;
+	}
+
+	.winner-pop-up .winner-text {
+		font-size: 16px;
+	}
 }

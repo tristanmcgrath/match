@@ -11,10 +11,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="description" content="">
   <link rel="stylesheet" type="text/css" href="css/app.css">
+  <link href="https://fonts.googleapis.com/css?family=Baloo|Nunito|Pacifico|Shadows+Into+Light" rel="stylesheet">
 </head>
 <body>
+  <h1 id="game-title">Match</h1>
   <div class="banner">
     <p id="guess-counter">Guess Count: 0</p>
+    <p id="star-count">☆☆☆☆☆</p>
   </div>
   <ul class="deck">
     <li class="card"></li>
@@ -34,14 +37,15 @@
     <li class="card"></li>
     <li class="card"></li>
   </ul>
+  <p class="taunt">How many guesses will it take you?</p>
+  <div class="winner-pop-up">
+    <h2>Congratulations!!!</h2>
+    <p class="stars">☆☆☆☆☆</p>
+    <p class="winner-text"></p>
+  </div>
   <div class="winner-overlay"></div>
   <canvas id="my-canvas"></canvas>
 
   <script src="js/app.js"></script>
-  <!-- <script>
-    var confettiSettings = { target: 'my-canvas' };
-      var confetti = new ConfettiGenerator(confettiSettings);
-      confetti.render();
-  </script> -->
 </body>
 </html>
