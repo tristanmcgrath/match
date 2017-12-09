@@ -1,6 +1,13 @@
 let tryCount = 0;    //This is a global variable responsible for keeping track of how many guesses the player has made throughout the game.
+let confettiSettings = { target: 'my-canvas', height: 1100 };  //this code makes use of the confetti code stored in js/index.min.js
+let confetti = new ConfettiGenerator(confettiSettings);   //confetti will display on player victory
 
-$(document).ready(function() {                               //This is the function responsible for creating a new shuffled set of cards on load
+
+$(document).ready(function() {
+  generateDeck();               //calls the below function to generate the deck on document ready
+});
+
+function generateDeck() {                               //This is the function responsible for creating a new shuffled set of cards
     let randomArray = shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]);  //This is the array that will be randomized based upon the below shuffle function
 
     for (let i=0; i<16; i++) {       //Cylcles through 16 times for the 16 cards to be generated
@@ -24,7 +31,8 @@ $(document).ready(function() {                               //This is the funct
           card.append( "<i class=\"fa fa-bicycle\"></i>" );
         }
     }
-});
+}
+
 
 
 function shuffle(array) {                                          //This is the array shuffle function which was provided to us by Udacity.
@@ -73,8 +81,7 @@ function matchTest(){    //Fucntion to test for matches and add/remove styles ac
             $('.winner-overlay').css({"display": "inline-block", "position": "absolute",
                                       "z-index": "1", "top": "0", "left": "0"}); //makes grey page overlay appear at game finish
 
-            let confettiSettings = { target: 'my-canvas', height: 1100 };  //this code makes use of the confetti code stored in js/index.min.js
-            let confetti = new ConfettiGenerator(confettiSettings);   //confetti will display on player victory
+
             confetti.render();                                        //confetti complements of npmjs https://www.npmjs.com/package/confetti-js
 
             $('.winner-pop-up').css({"z-index": "3", "display": "block"});               //causes the hidden winner pop-up screen to appear
@@ -83,6 +90,27 @@ function matchTest(){    //Fucntion to test for matches and add/remove styles ac
 
         }, 500); //half second delay
     }
+}
+
+function reset() {
+
+  $('li').attr("class", "card");
+  $('li').children().remove();
+  generateDeck();
+
+  $('#guess-counter').html(`Guess Count: 0`);
+  $('#star-count').html(`☆☆☆☆☆`);
+  $('#timer').html(`0:00`);
+
+
+  $('.winner-pop-up').removeAttr("style");
+  $('.winner-overlay').removeAttr("style");
+
+  $('#my-canvas').removeAttr("width");
+  $('#my-canvas').removeAttr("height");
+  confetti.clear();
+
+  tryCount = 0;
 }
 
 
@@ -95,4 +123,12 @@ $('.card').click(function(evt){                                 //This is the ca
             matchTest();                                //If the click flips over a second card, then matchTest() is invoked
         }
     }
+});
+
+$('#reset').click(function() {
+  reset();
+});
+
+$('.play-again').click(function() {
+  reset();
 });
