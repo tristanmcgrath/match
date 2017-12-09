@@ -69,13 +69,17 @@ table {
   margin-top: 30px;
 }
 
-.banner {								/*Styling for the .banner div which contains live guess count and star count*/
-	height: 30px;
+.banner-bottom, .banner-top {								/*Styling for the .banner div which contains live guess count and star count*/
 	width: 660px;
-	margin: 10px auto 0;
+	margin: 10px auto;
 }
 
-#guess-counter, #star-count {      /*Styling for guess count and star count p tags*/
+.banner-bottom {
+	margin-bottom: 40px;
+}
+
+#guess-counter, #star-count,
+#timer, #reset {     					 /*Styling for guess count and star count p tags*/
 	box-sizing: border-box;
 	padding: 0 15px;
 	line-height: 30px;
@@ -85,9 +89,27 @@ table {
 	color: #b1abab;
 }
 
-#star-count {
+#star-count, #reset {
 	float: right;
 }
+
+#timer {
+	font-size: 25px;
+	padding-top: 3px;
+}
+
+#reset {
+	border: 2px solid #b1abab;
+	border-radius: 10px;
+	font-weight: bold;
+}
+
+#reset:hover {
+	background: #b1abab;
+	color: #ffe7ba;
+	cursor: pointer;
+}
+
 
 .taunt {						/*Styling for taunt message p tag at bottom of screen*/
 	color: #b1abab;
@@ -97,6 +119,7 @@ table {
 	padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 60px;
+	clear: both;
 }
 /*****End Styling of page contents above and below game board****/
 /******************************************************/
@@ -115,7 +138,7 @@ table {
 	padding: 32px;
 	border-radius: 10px;
 	box-shadow: 12px 15px 20px 0 rgba(46,61,73, 0.5);
-	margin: 0 auto 3em;
+	margin: 0 auto 20px;
 	display: flex;
 	flex-wrap: wrap;
   justify-content: space-between;
@@ -217,7 +240,7 @@ canvas {								/*This is the canvas used to create the confetti shower*/
 /*********Begin Break Point Styling***********/
 /*Break Point 1: Decreases the size of several containers and text elements from default*/
 
-@media screen and (max-width: 876px) {
+@media screen and (max-width: 970px) {
 
 	.winner-pop-up {
 	  height: 360px;
@@ -248,7 +271,7 @@ canvas {								/*This is the canvas used to create the confetti shower*/
 								 first decrease of the game board and card sizes from default*/
 @media screen and (max-width: 680px) {
 
-	.banner {
+	.banner-top, .banner-bottom {
 		width: 480px;
 	}
 
@@ -303,20 +326,32 @@ canvas {								/*This is the canvas used to create the confetti shower*/
 		font-size: 90px;
 	}
 
-	#guess-counter, #star-count {
+	#guess-counter, #star-count, #timer {
 		padding: 0 10px;
 		font-size: 16px;
 	}
 
-	.banner {
+	#reset {
+		padding: 2px 4px 0;
+		font-size: 14px;
+		line-height: 22px;
+		margin-right: 5px;
+	}
+
+	.banner-top, .banner-bottom {
 		width: 300px;
+	}
+
+	.banner-bottom {
+		margin: 0 auto 16px;
 	}
 
 	.deck {
 		width: 300px;
 		min-height: 300px;
 		padding: 8px;
-		margin: 0 auto 20px;
+		margin: 0 auto 12px;
+		box-shadow: 5px 8px 20px 0 rgba(46,61,73, 0.5);
 	}
 
 	.deck .card {

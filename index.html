@@ -16,7 +16,7 @@
 <body>
   <h1 id="game-title">Match</h1>    <!--Game Title-->
 
-  <div class="banner">                            <!--.banner div contains the guess counter and stars counter-->
+  <div class="banner-top">                            <!--.banner div contains the guess counter and stars counter-->
     <p id="guess-counter">Guess Count: 0</p>      <!--Displays the current number of guesses used so far-->
     <p id="star-count">☆☆☆☆☆</p>                  <!--Displays the number of stars remaining (player begins with 5 and progressively loses them)-->
   </div>
@@ -40,7 +40,12 @@
     <li class="card"></li>
   </ul>
 
-  <p class="taunt">How many guesses will it take you?</p>       <!--Houses a taunt message that displays at the bottom of the page-->
+  <div class="banner-bottom">                            <!--.banner div contains the guess counter and stars counter-->
+    <p id="timer">Time: 1:13</p>      <!--Displays the current number of guesses used so far-->
+    <div id="reset">Reset Game</div>                  <!--Displays the number of stars remaining (player begins with 5 and progressively loses them)-->
+  </div>
+
+  <p class="taunt">How many guesses will it take you?</p>       <!--Houses a taunt message that displays at the bottom of the page--> -->
 
   <div class="winner-pop-up">     <!--pop-up congratulations message appears on game over (hidden by default)-->
     <h2>Congratulations!!!</h2>
