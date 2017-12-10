@@ -410,6 +410,7 @@ canvas {								/*This is the canvas used to create the confetti shower*/
 		width: 85%;
 	  height: 250px;
 		padding: 15px;
+		border: 2px solid #00c4ff;
 	}
 
 	.winner-pop-up h2 {

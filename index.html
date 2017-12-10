@@ -41,8 +41,8 @@
   </ul>
 
   <div class="banner-bottom">                            <!--.banner div contains the guess counter and stars counter-->
-    <p id="timer">Time: 1:13</p>      <!--Displays the current number of guesses used so far-->
-    <div id="reset">Reset Game</div>                  <!--Displays the number of stars remaining (player begins with 5 and progressively loses them)-->
+    <p id="timer">Time: 0:00</p>      <!--Displays the current time ellapsed, updated via app.js-->
+    <div id="reset">Reset Game</div>                  <!--Creates a button which can be used to refresh and start a new game-->
   </div>
 
   <p class="taunt">How many guesses will it take you?</p>       <!--Houses a taunt message that displays at the bottom of the page-->
@@ -51,7 +51,7 @@
     <h2>Congratulations!!!</h2>
     <p class="stars"></p>         <!--Paragraph contents filled when game ends with remaining star count (see app.js)-->
     <p class="winner-text"></p>   <!--Paragraph contents filled when game ends with custom text (see app.js)-->
-    <div class="play-again">Play Again?</div>
+    <div class="play-again">Play Again?</div>   <!--Button on winner screen which allows player to start new game-->
   </div>
 
   <div class="winner-overlay"></div>   <!--Creates a grey overlay over the page once the game is over (hidden by default)-->
