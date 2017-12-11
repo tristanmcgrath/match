@@ -16,21 +16,21 @@ function generateDeck() {                               //This is the function r
     for (let i=0; i<16; i++) {       //Cylcles through 16 times for the 16 cards to be generated
         let card = $('li').eq(i);    //Each iteration sets variable card equal to the i-th li card element
 
-        if (randomArray[i] === 1 || randomArray[i] === 2) {           //Since the randomArray will randomly have one of each number 1 through 16, the
+        if (randomArray[i] <= 2) {           //Since the randomArray will randomly have one of each number 1 through 16, the
           card.append( "<i class=\"fa fa-anchor\"></i>" );            //the following logic is set up to append the appropriate class code for a given
-        } else if (randomArray[i] === 3 || randomArray[i] === 4) {    //fa icon to the <i> element. This for-loop will result in 16 cards with 8 different
+        } else if (randomArray[i] <= 4) {    //fa icon to the <i> element. This for-loop will result in 16 cards with 8 different
           card.append( "<i class=\"fa fa-diamond\"></i>" );           //icons and two of each icon.
-        } else if (randomArray[i] === 5 || randomArray[i] === 6) {
+        } else if (randomArray[i] <= 6) {
           card.append( "<i class=\"fa fa-rebel\"></i>" );
-        } else if (randomArray[i] === 7 || randomArray[i] === 8) {
+        } else if (randomArray[i] <= 8) {
           card.append( "<i class=\"fa fa-snowflake-o\"></i>" );
-        } else if (randomArray[i] === 9 || randomArray[i] === 10) {
+        } else if (randomArray[i] <= 10) {
           card.append( "<i class=\"fa fa-futbol-o\"></i>" );
-        } else if (randomArray[i] === 11 || randomArray[i] === 12) {
+        } else if (randomArray[i] <= 12) {
           card.append( "<i class=\"fa fa-first-order\"></i>" );
-        } else if (randomArray[i] === 13 || randomArray[i] === 14) {
+        } else if (randomArray[i] <= 14) {
           card.append( "<i class=\"fa fa-bolt\"></i>" );
-        } else if (randomArray[i] === 15 || randomArray[i] === 16) {
+        } else if (randomArray[i] <= 16) {
           card.append( "<i class=\"fa fa-bicycle\"></i>" );
         }
     }
