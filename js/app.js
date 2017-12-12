@@ -78,9 +78,13 @@ function matchTest(){    //Fucntion to test for matches and add/remove styles ac
     tryCount += 1;                                             //Every two card flips will trigger an increment of guess counter
     $('#guess-counter').html(`Guess Count: ${tryCount}`);      //Visually updates the guess count for the player at top of screen
 
-    if (tryCount > 14 && tryCount < 22) {          //This block of code progressively decreases the number of stars with the more
-      $('#star-count').html(`☆☆`);               //guesses it takes to solve. Fewer guesses will leave more stars.
-    } else if (tryCount >= 22) {
+    if (tryCount > 12 && tryCount < 16) {          //This block of code progressively decreases the number of stars with the more
+      $('#star-count').html(`☆☆☆☆`);               //guesses it takes to solve. Fewer guesses will leave more stars.
+    } else if (tryCount >= 16 && tryCount < 20) {
+      $('#star-count').html(`☆☆☆`);
+    } else if (tryCount >= 20 && tryCount < 23) {
+      $('#star-count').html(`☆☆`);
+    } else if (tryCount >= 23) {
       $('#star-count').html(`☆`);
     }
 
@@ -130,7 +134,7 @@ function reset() {     //this is the function which is invoked when the player r
   generateDeck();        //invokes generateDeck() to create a new shuffled deck of cards
 
   $('#guess-counter').html(`Guess Count: 0`);  //guess count reset
-  $('#star-count').html(`☆☆☆`);              //star count reset to five stars
+  $('#star-count').html(`☆☆☆☆☆`);              //star count reset to five stars
   $('#timer').html(`Time: 0:00`);             //timer reset to 0:00
 
 
@@ -149,7 +153,10 @@ function reset() {     //this is the function which is invoked when the player r
 $('.card').click(function(evt){        //This is the card click event handler function
 
     let currentCardClass = $(evt.target).attr("class");         //Class attribute used by if statement to test if valid card has been clicked
-    if ($('.selected').length < 2 && (currentCardClass !== "card selected" && currentCardClass !== "card match" && currentCardClass[0] !== "f")) {
+    console.log(currentCardClass.includes("fa"));
+    if ($('.selected').length < 2 && (currentCardClass.includes("selected") !== true &&
+                                      currentCardClass.includes("match") !== true && 
+                                      currentCardClass.includes("fa") !== true)) {
         //Above if statement ensures only 2 cards can be selected at a time, clicking cards already flipped (matched or selected) won't work.
 
         $(evt.target).toggleClass("selected");     //Add the class .selected which will apply appropriate stylings
