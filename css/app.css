@@ -66,7 +66,7 @@ table {
   font-family: 'Baloo', cursive;
   font-size: 120px;
   color: #80a7ec;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .banner-bottom, .banner-top {								/*Styling for the .banner div which contains live guess count and star count*/
@@ -136,8 +136,8 @@ table {
 
 .deck {												/*Styling for the game board <ul> container*/
 	box-sizing: border-box;
-	width: 660px;
-  min-height: 680px;
+	width: 580px;
+  min-height: 580px;
 	background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
 	padding: 32px;
 	border-radius: 10px;
@@ -150,8 +150,8 @@ table {
 }
 
 .deck .card {           /*Default styling for the individual cards on game board*/
-	height: 125px;
-	width: 125px;
+	height: 116px;
+	width: 116px;
 	transition: background 1s ease;   /*Transition added for card flips*/
 	background: #2e3d49;
 	border-radius: 8px;
